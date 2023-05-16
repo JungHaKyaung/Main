@@ -1,0 +1,17 @@
+import random
+
+def throw_stick():
+    return [random.randint(0, 1) for _ in range(4)]
+
+def move_piece(player, position, count):
+    new_position = position + count
+    if new_position > 21:
+        new_position = 21 - (new_position - 21)
+    player['position'] = new_position
+
+def play_game():
+    players = [
+        {'name': 'Player 1', 'position': 0},
+        {'name': 'Player 2', 'position': 0},
+    ]
+    player_turn = 0
