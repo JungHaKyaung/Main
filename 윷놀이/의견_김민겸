@@ -15,3 +15,20 @@ def play_game():
         {'name': 'Player 2', 'position': 0},
     ]
     player_turn = 0
+    
+    while True:
+        input(f"{players[player_turn]['name']}, press Enter to throw the stick...")
+        stick = throw_stick()
+        count = sum(stick)
+        print(f"{players[player_turn]['name']} threw {count}.")
+
+        move_piece(players[player_turn], players[player_turn]['position'], count)
+        print(f"{players[player_turn]['name']}'s piece is now at position {players[player_turn]['position']}.\n")
+
+        if players[player_turn]['position'] == 21:
+            print(f"{players[player_turn]['name']} wins!")
+            break
+
+        player_turn = (player_turn + 1) % 2
+
+play_game()
