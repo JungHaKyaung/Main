@@ -1,0 +1,23 @@
+import random
+
+def throw_yut():
+    yut_results = ['도', '개', '걸', '윷', '모', '백도','낙']
+    result = random.choice(yut_results)
+    return result
+
+def play_yut():
+    while True:
+        print("윷을 던집니다...")
+        result = throw_yut()
+        print("나온 결과:", result)
+        
+        if result == '윷' or result == '모':
+            print("한 번 더 던집니다!")
+            continue
+        
+        elif result == '백도':
+            print("백도!")
+        else result == '낙'
+            print('낙이다!!! 넌 자격이 없어')
+
+        break
