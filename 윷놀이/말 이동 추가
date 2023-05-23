@@ -1,0 +1,82 @@
+import random
+
+# 윷놀이 판 정의
+yut_board = {
+    1: "도",
+    2: "개",
+    3: "걸",
+    4: "윷",
+    5: "모"
+}
+
+# 윷을 던지는 함수 정의
+def throw_yut():
+    yut_result = []
+    for i in range(4):
+        yut = random.randint(1,2)
+        yut_result.append(yut)
+    return yut_result
+
+# 윷의 결과를 해석하는 함수 정의
+def interpret_yut(yut_result):
+    back_do_count = 0
+    for yut in yut_result:
+        if yut == 1:
+            back_do_count += 1
+    if back_do_count == 0:
+        if sum(yut_result) == 4:
+            return "윷"
+        elif sum(yut_result) == 5:
+            return "모"
+        else:
+            return yut_board[sum(yut_result)]
+    elif back_do_count == 1:
+        return "걸"
+    elif back_do_count == 2:
+        return "개"
+    elif back_do_count == 3:
+        return "도"
+    else:
+        return "잘못된 결과입니다."
+
+# 말 이동 함수
+def move_yut(yut_result):
+    move_count = 0
+    
+    if yut_result == "도":
+        move_count = 1
+    elif yut_result == "개":
+        move_count = 2
+    elif yut_result == "걸":
+        move_count = 3
+    elif yut_result == "윷":
+        move_count = 4
+    elif yut_result == "모":
+        move_count = 5
+    
+    return move_count
+    
+# 윷놀이 실행
+move_count = 0
+num_p = int(input("인원수를 적어주세요 : "))
+print("%d명으로 윷놀이를 시작합니다!"%(num_p))
+while True:
+    enter_button = input("Enter를 누르면 윷을 던집니다.(아무거나 입력하면 종료됩니다.)")
+    if enter_button == "":
+        yut_result = throw_yut()
+        print("윷의 결과:", yut_result)
+        yut_interpret = interpret_yut(yut_result)
+        move_count = move_yut(yut_interpret)
+        print("해석 결과:", yut_interpret)
+        print("%d칸 앞으로 이동"%(move_count))
+        if yut_interpret == "잘못된 결과입니다.":
+            break
+        elif yut_interpret == "도":
+            print("한 바퀴 돌았습니다!")
+        elif yut_interpret == "모":
+            print("한 바퀴 돌았으며, 한 번 더 던집니다.")
+        else:
+            continue
+    else:
+        print("END")
+        break
