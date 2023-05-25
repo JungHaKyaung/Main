@@ -1,0 +1,247 @@
+import pygame
+from pygame.locals import *
+import random
+import time
+
+# 윷놀이 판 정의
+yut_board = {
+    1: "도",
+    2: "개",
+    3: "걸",
+    4: "윷",
+    5: "모"
+}
+
+# 팀 설정
+def set_teams(num_teams, num_players_per_team):
+    teams = {}
+    for i in range(num_teams):
+        team_name = input("팀 이름을 입력하세요: ")
+        teams[i] = {"name": team_name, "score": 0, "horse_count": num_players_per_team}
+    return teams
+
+# 턴 넘어가기
+def next_turn(current_team, num_teams):
+    current_team = (current_team + 1) % num_teams
+    return current_team
+
+# 윷을 던지는 함수 정의
+def throw_yut():
+    yut_result = []
+    for i in range(4):
+        yut = random.randint(1,2)
+        yut_result.append(yut)
+    return yut_result
+
+# 윷의 결과를 해석하는 함수 정의
+def interpret_yut(yut_result):
+    back_do_count = 0
+    for yut in yut_result:
+        if yut == 1:
+            back_do_count += 1
+    if back_do_count == 0:
+        if sum(yut_result) == 4:
+            return "윷"
+        elif sum(yut_result) == 5:
+            return "모"
+        else:
+            return yut_board[sum(yut_result)]
+    elif back_do_count == 1:
+        return "걸"
+    elif back_do_count == 2:
+        return "개"
+    elif back_do_count == 3:
+        return "도"
+    else:
+        return "잘못된 결과입니다."
+
+# 말 이동 함수
+def move_yut(yut_result):
+    move_count = 0
+    
+    if yut_result == "도":
+        move_count = 1
+    elif yut_result == "개":
+        move_count = 2
+    elif yut_result == "걸":
+        move_count = 3
+    elif yut_result == "윷":
+        move_count = 4
+    elif yut_result == "모":
+        move_count = 5
+    
+    return move_count
+
+# 윷놀이 실행
+num_teams = 2
+num_players_per_team = int(input("한 팀에 몇 명이 들어갈지 입력하세요: "))
+print("%d개의 팀이 있으며, 한 팀당 %d명씩 참가합니다!" % (num_teams, num_players_per_team))
+
+teams = set_teams(num_teams, num_players_per_team)
+current_team = int(input("먼저 시작할 팀을 선택하세요 (0 또는 1): "))
+
+# 스크린 전체 크기 지정
+SCREEN_WIDTH = 1000
+SCREEN_HEIGHT = 800
+
+# 색상 상수
+BLACK = (0,0,0)
+WHITE = (255,255,255)
+GREEN = (0,255,0)
+
+# pygame 초기화
+pygame.init()
+
+# 스크린 객체 저장
+SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("윷놀이")
+
+# FPS를 위한 Clock 생성
+clock = pygame.time.Clock()
+
+# 이미지 로드
+yut_enter_button = pygame.image.load("yut_enter_button.png")
+
+# 이미지 크기 변경
+yut_enter_button = pygame.transform.scale(yut_enter_button,(120,90))
+
+# 이미지의 Rect 정보를 저장
+yut_enter_button_Rect = yut_enter_button.get_rect()
+
+# 이미지 좌표값 수정
+yut_enter_button_Rect.centerx = round(SCREEN_WIDTH / 2)
+yut_enter_button_Rect.bottom = round(800)
+
+dx = 0
+dy = 0
+
+system_yut_result = ""
+system_yut_interpret = ""
+system_move_count = ""
+
+# 마우스로 이미지에 이벤트를 주기위한 flag
+m_move = False
+
+# 입력 받을 변수
+text1 = ""
+
+# Font 객체 생성
+myFont = pygame.font.SysFont("malgungothic",30,True,False)
+small_font = pygame.font.SysFont("malgungothic",15,True,False)
+
+# 폰트 랜더링
+text1_surface = myFont.render(text1, True, WHITE)
+
+playing = True
+
+while playing:
+    # 이벤트 처리
+    for event in pygame.event.get():
+        # 창의 X를 눌렀을 경우 종료
+        if event.type == pygame.QUIT:
+            playing = False
+            pygame.quit()
+        # 마우스 버튼이 눌렸을 때
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            # 마우스의 이동 경로를 위해 get_rel() 메서드를 호출, 첫 호출값은 (0,0)
+            pygame.mouse.get_rel()
+            # 마우스의 포지션을 받아서 mouse_pos에 저장
+            mouse_pos = pygame.mouse.get_pos()
+            # 마우스 포지션이 image의 Rect 안에 들어오는지
+            # mouse_pos[0]은 x좌표값, mouse_pos[1]은 y 좌표값
+            if mouse_pos[0] > yut_enter_button_Rect.left and mouse_pos[0] < yut_enter_button_Rect.right and mouse_pos[1] > yut_enter_button_Rect.top and mouse_pos[1] < yut_enter_button_Rect.bottom:
+                # 마우스 포지션이 image의 Rect안에 있으면 m_move를 True로 전환
+                m_move = True
+                # 마우스 커서 모양 변경
+                pygame.mouse.set_cursor(*pygame.cursors.tri_left)
+        if event.type == pygame.MOUSEBUTTONUP:
+            # m_move를 False로
+            m_move = False
+            pygame.mouse.set_cursor(*pygame.cursors.arrow)
+        # 키를 눌렀을 경우
+        if event.type == pygame.KEYDOWN:
+            # 입력된 텍스트 출력후 초기화
+            if event.key == pygame.K_RETURN:
+                print(text1)
+                text1 = ""
+                # 맨 끝 글자 지우기
+            elif event.key == pygame.K_BACKSPACE:
+                text1 = text1[:-1]
+            else:
+                # 글자 하나하나 입력받기
+                text1 += event.unicode
+                
+            text1_surface = myFont.render(text1, True, WHITE)
+    
+    current_team_name = teams[current_team]["name"]
+    
+    system_guide = f"{current_team_name} 팀의 차례입니다. Enter를 누르면 윷을 던집니다. (아무거나 입력하면 종료됩니다.)"
+    
+    if m_move == True:
+        yut_result = throw_yut()
+        system_yut_result = "윷의 결과 : %s"%(yut_result)
+        yut_interpret = interpret_yut(yut_result)
+        move_count = move_yut(yut_interpret)
+        system_yut_interpret = "해석 결과 : %s"%(yut_interpret)
+        system_move_count = "%d칸 앞으로 이동"%(move_count)
+        teams[current_team]["score"] += 1
+        current_team = next_turn(current_team, num_teams)
+    
+    # myFont를 surface에 그리기
+    text_Title = myFont.render("윷놀이",True,WHITE)
+    text_system = myFont.render("SYSTEM",True,WHITE)
+    text_guide = small_font.render("%s"%(system_guide),True,GREEN)
+    text_yut_result = small_font.render("%s"%(system_yut_result),True,GREEN)
+    text_yut_interpret = small_font.render("%s"%(system_yut_interpret),True,GREEN)
+    text_move_count = small_font.render("%s"%(system_move_count),True,GREEN)
+    text_team1_name = myFont.render("%s팀"%(teams[0]["name"]),True,WHITE)
+    text_team2_name = myFont.render("%s팀"%(teams[1]["name"]),True,WHITE)
+    
+    # Rect 생성
+    text_Rect = text_Title.get_rect()
+    text_system_Rect = text_system.get_rect()
+    text_guide_Rect = text_guide.get_rect()
+    text_yut_result_Rect = text_yut_result.get_rect()
+    text_yut_interpret_Rect = text_yut_interpret.get_rect()
+    text_move_count_Rect = text_move_count.get_rect()
+    text_team1_name_Rect = text_team1_name.get_rect()
+    text_team2_name_Rect = text_team2_name.get_rect()
+    
+    # Rect 위치
+    text_Rect.centerx = round(SCREEN_WIDTH / 2)
+    text_Rect.y = 50
+    text_system_Rect.centerx = round(SCREEN_WIDTH / 2)
+    text_system_Rect.y = 100
+    text_guide_Rect.centerx = round(SCREEN_WIDTH / 2)
+    text_guide_Rect.y = 200
+    text_yut_result_Rect.centerx = round(SCREEN_WIDTH / 2)
+    text_yut_result_Rect.y = 250
+    text_yut_interpret_Rect.centerx = round(SCREEN_WIDTH / 2)
+    text_yut_interpret_Rect.y = 300
+    text_move_count_Rect.centerx = round(SCREEN_WIDTH / 2)
+    text_move_count_Rect.y = 350
+    text_team1_name_Rect.x = 0
+    text_team1_name_Rect.y = 80
+    text_team2_name_Rect.right = 1000
+    text_team2_name_Rect.y = 80
+    
+    # 스크린 배경색
+    SCREEN.fill(BLACK)
+    
+    # Text Surface SCREEN에 복사하기, Rect 사용
+    SCREEN.blit(text_Title, text_Rect)
+    SCREEN.blit(text1_surface, (200,300))
+    SCREEN.blit(text_system, text_system_Rect)
+    SCREEN.blit(text_guide, text_guide_Rect)
+    SCREEN.blit(text_yut_result, text_yut_result_Rect)
+    SCREEN.blit(text_yut_interpret, text_yut_interpret_Rect)
+    SCREEN.blit(text_move_count, text_move_count_Rect)
+    SCREEN.blit(text_team1_name, text_team1_name_Rect)
+    SCREEN.blit(text_team2_name, text_team2_name_Rect)
+    SCREEN.blit(yut_enter_button, yut_enter_button_Rect)
+    
+    # 작업한 스크린의 내용을 갱신하기
+    pygame.display.flip()
+    
+    # 1초에 60번의 빈도로 순환
+    clock.tick(60)
