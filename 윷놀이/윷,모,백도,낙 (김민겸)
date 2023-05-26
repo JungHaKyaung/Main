@@ -6,3 +6,14 @@ def throw_yut():
         yut = random.randint(1,2)
         yut_result.append(yut)
     return yut_result
+
+def interpret_yut(yut_result):
+    back_do_count = 0
+    for yut in yut_result:
+        if yut == 1:
+            back_do_count += 1
+    if back_do_count == 0:
+        if sum(yut_result) == 4:
+            return "윷"
+        elif sum(yut_result) == 5:
+            return "모"
