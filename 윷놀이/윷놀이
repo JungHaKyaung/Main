@@ -30,7 +30,7 @@ def interpret_yut(yut_result):
             return "모"
         else:
             return yut_board[sum(yut_result)]
-    elif back_do_count == 1:
+    elif back_do_count == 1:xdfg
         return "걸"
     elif back_do_count == 2:
         return "개"
