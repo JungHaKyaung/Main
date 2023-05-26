@@ -2,7 +2,7 @@ import random
 
 def throw_yut():
     yut_result = []
-    for i in range(4):
+    for i in range(6):
         yut = random.randint(1,2)
         yut_result.append(yut)
     return yut_result
@@ -13,7 +13,11 @@ def interpret_yut(yut_result):
         if yut == 1:
             back_do_count += 1
     if back_do_count == 0:
-        if sum(yut_result) == 4:
+        if sum(yut_result) == 5:
             return "윷"
-        elif sum(yut_result) == 5:
+        elif sum(yut_result) == 6:
             return "모"
+        elif sum(yut_result) == 1: 
+            return "빽도"
+        else sum(yut_result) == 0:
+            return "낙"
