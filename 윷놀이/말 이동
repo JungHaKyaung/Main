@@ -85,8 +85,6 @@ def interpret_yut(yut_result):
 # 말 이동 함수
 def move_yut(yut_result, yut_py, yut_px):
     move_count = 0
-    mcnt1 = 0
-    mcnt2 = 0
     
     if yut_result == "도":
         move_count = 1
@@ -103,16 +101,19 @@ def move_yut(yut_result, yut_py, yut_px):
         if (yut_py - move_count) >= 0:
             yut_py = yut_py - move_count
         else:
+            yut_px = yut_px - (move_count - yut_py)
             yut_py = 0
     elif (yut_py == 0) and (yut_px > 0) and (yut_px < 5):
         if (yut_px - move_count) >= 0:
             yut_px = yut_px - move_count
         else:
+            yut_py = yut_py + (move_count - yut_px)
             yut_px = 0
     elif (yut_py >= 0) and (yut_py < 4) and (yut_px == 0):
         if (yut_py + move_count) <= 4:
             yut_py = yut_py + move_count
         else:
+            yut_px = yut_px + (yut_py - move_count)
             yut_py = 4
     elif (yut_py == 4) and (yut_px >= 0) and (yut_px < 5):
         if (yut_px + move_count) <= 4:
@@ -121,6 +122,20 @@ def move_yut(yut_result, yut_py, yut_px):
             yut_px = 4
         
     return move_count,yut_py,yut_px
+
+# 대각선 이동 함수(아직)
+def move_diagonal(yut_py,yut_px,move_cnt):
+    if (yut_py == 0) and (yut_px == 4):
+        yut_py = yut_py + move_cnt
+        yut_px = yut_px - move_cnt
+    elif (yut_py == 0) and (yut_px == 0):
+        yut_py = yut_py + move_cnt
+        yut_px = yut_px + move_cnt
+    elif (yut_py == 4) and (yut_px == 0):
+        yut_py = yut_py - move_cnt
+        yut_px = yut_px + move_cnt
+    
+    return yut_py,yut_px
     
 # 윷놀이 실행
 # 윷놀이 실행
