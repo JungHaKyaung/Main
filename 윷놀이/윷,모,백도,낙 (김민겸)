@@ -1,23 +1,36 @@
 import random
 
 def throw_yut():
-    yut_result = []
-    for i in range(6):
-        yut = random.randint(1,2)
-        yut_result.append(yut)
-    return yut_result
+    yut_results = ['도', '개', '걸', '윷', '모', '백도', '낙']
+    result = random.choice(yut_results)
+    return result
 
-def interpret_yut(yut_result):
-    back_do_count = 0
-    for yut in yut_result:
-        if yut == 1:
-            back_do_count += 1
-    if back_do_count == 0:
-        if sum(yut_result) == 5:
-            return "윷"
-        elif sum(yut_result) == 6:
-            return "모"
-        elif sum(yut_result) == 1: 
-            return "빽도"
-        else sum(yut_result) == 0:
-            return "낙"
+def move_forward(steps):
+    # 앞으로 steps 칸 이동하는 코드 작성
+    pass
+
+def move_backward(steps):
+    # 뒤로 steps 칸 이동하는 코드 작성
+    pass
+
+def play_yut():
+    while True:
+        print("윷을 던집니다...")
+        result = throw_yut()
+        print("나온 결과:", result)
+
+        if result == '윷' or result == '모':
+            print("한 번 더 던집니다!")
+            continue
+
+        if result == '백도':
+            print("백도! 한 번 더 던지고 뒤로 한 칸 이동합니다!")
+            result = throw_yut()
+            print("추가로 나온 결과:", result)
+            print("뒤로 한 칸 이동하고 게임을 계속 진행합니다!")
+            move_backward(1)  # 뒤로 한 칸 이동하는 함수 호출
+
+        if result == '낙':
+            print("낙! 아무런 동작을 취하지 않고 게임을 계속 진행합니다.")
+
+        break
