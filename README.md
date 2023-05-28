@@ -26,6 +26,7 @@
 - 윷놀이 규칙은 지역마다 다를 수 있으나 기본적인 규칙을 가지고 게임을 만들었습니다. 
 <div align=center>
 <img src = "./Yut.jpeg" width="400">
+<img src = "./playingYut.jpeg" width="350">
 </div>
 
 ### ✅ What we made
