@@ -23,14 +23,14 @@ def play_yut():
             print("한 번 더 던집니다!")
             continue
 
-        if result == '백도':
+        elif result == '백도':
             print("백도! 한 번 더 던지고 뒤로 한 칸 이동합니다!")
             result = throw_yut()
             print("추가로 나온 결과:", result)
             print("뒤로 한 칸 이동하고 게임을 계속 진행합니다!")
             move_backward(1)  # 뒤로 한 칸 이동하는 함수 호출
 
-        if result == '낙':
+        else result == '낙':
             print("낙! 아무런 동작을 취하지 않고 게임을 계속 진행합니다.")
 
         break
