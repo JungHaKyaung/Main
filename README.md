@@ -25,8 +25,8 @@
 - 윷은 윗면이 볼록하고 주로 한자가 적혀있으며, 밑면은 평평하고 4개 중 하나에는 X 표시가 있습니다. 
 - 윷놀이 규칙은 지역마다 다를 수 있으나 기본적인 규칙을 가지고 게임을 만들었습니다. 
 <div align=center>
-<img src = "./Yut.jpeg" width="400">
-<img src = "./playingYut.jpeg" width="350">
+<img src = "./pictures/Yut.jpeg" width="400">
+<img src = "./pictures/playingYut.jpeg" width="350">
 </div>
 
 
@@ -36,8 +36,8 @@
 
 1. 윷을 던지면 도, 개, 걸, 윷, 모가 나오며 도는 1칸, 개는 2칸, 걸은 3칸, 윷은 4칸, 모는 5칸을 이동하며 윷과 모는 윷을 던질 기회가 한 번씩 더 생깁니다.
 <div align=center>
-<img src = "./Yut_rule1.png" width="250">
-<img src = "./Yut_rule2.png" width="250">
+<img src = "./pictures/Yut_rule1.png" width="250">
+<img src = "./pictures/Yut_rule2.png" width="250">
 </div>
 
 2. 말은 팀 당 총 3마리이며 윷놀이 판 각 꼭지점과 중앙에는 갈림길이 존재하며 말이 각 꼭지점과 중앙에 위치하게 되면 길을 선택할 수 있게 됩니다.
