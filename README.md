@@ -1,6 +1,6 @@
 <h1>✨OSS 4팀✨</h1>
 
-![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=200&section=header&text=Hello%20World&fontSize=80)
+![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=230&section=header&text=Hello%20World&fontSize=80)
 
 
 ## 🌏Hello, World!🌍
