@@ -67,6 +67,18 @@ while playing:
         if event.type == pygame.QUIT:
             playing = False
             pygame.quit()
+        if event.type == pygame.MOUSEMOTION:
+            text_mouse_coordinate = arial_font.render("움직임",True,BLACK)
+            text_mouse_coordinate_rect = text_mouse_coordinate.get_rect()
+            text_mouse_coordinate_rect.x = 20
+            text_mouse_coordinate_rect.y = 40
+            SCREEN.blit(text_mouse_coordinate, text_mouse_coordinate_rect)
+        else:
+            text_mouse_coordinate = arial_font.render("NOPE",True,BLACK)
+            text_mouse_coordinate_rect = text_mouse_coordinate.get_rect()
+            text_mouse_coordinate_rect.x = 50
+            text_mouse_coordinate_rect.y = 40
+            SCREEN.blit(text_mouse_coordinate, text_mouse_coordinate_rect)
     
     # 작업한 스크린의 내용을 갱신
     pygame.display.flip()
