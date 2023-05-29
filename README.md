@@ -29,6 +29,7 @@
 <img src = "./playingYut.jpeg" width="350">
 </div>
 
+
 ### ✅ What we made
 - 저희가 만든 윷놀이 게임은 기본적인 윷놀이 게임으로 2팀으로 진행이 됩니다. 
 - 다음은 윷놀이 게임의 규칙입니다.
