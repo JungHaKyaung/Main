@@ -28,6 +28,7 @@ clock = pygame.time.Clock()
 
 # 폰트 객체 생성
 arial_font = pygame.font.SysFont("arial",12,False,False)
+malgungothic_font = pygame.font.SysFont("malgungothic",12,False,False)
 
 # x 좌표 눈금선 그리기
 for i in range(10,1000,10):
@@ -68,7 +69,7 @@ while playing:
             playing = False
             pygame.quit()
         if event.type == pygame.MOUSEMOTION:
-            text_mouse_coordinate = arial_font.render("움직임",True,BLACK)
+            text_mouse_coordinate = malgungothic_font.render("움직임",True,BLACK)
             text_mouse_coordinate_rect = text_mouse_coordinate.get_rect()
             text_mouse_coordinate_rect.x = 20
             text_mouse_coordinate_rect.y = 40
