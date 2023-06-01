@@ -53,4 +53,4 @@
 ## Our skill 
 ![Python](https://img.shields.io/badge/Python-3776AB.svg?&style=for-the-badge&logo=Python&logoColor=white)
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=footer" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&&text=Thank%20you&section=footer" />
