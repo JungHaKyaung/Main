@@ -1,1 +1,3 @@
-.
+class SaveAndUse:       
+    def __init__( self ):
+        self.items = []
