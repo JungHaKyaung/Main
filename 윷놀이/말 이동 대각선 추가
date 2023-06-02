@@ -11,6 +11,7 @@ yut_yut = {
 
 #윷놀이 판 생성
 yut_board = [['-' for _ in range(5)] for _ in range(5)]
+yut_player = [['-' for _ in range(1)] for _ in range(1)]
 
 yut_playerx = 4
 yut_playery = 4
@@ -186,12 +187,12 @@ while True:
         
         yut_interpret = interpret_yut(yut_result)
         
-        print("해석 결과:", yut_interpret)
-        print("%d칸 앞으로 이동"%(move_count))
-        
         move_count,yut_playery,yut_playerx,move_yn,move_diagonal_location = move_yut(yut_interpret,yut_playery,yut_playerx,move_yn,move_diagonal_location)
         yut_playery,yut_playerx,move_yn,move_diagonal_location = move_diagonal(yut_playery,yut_playerx,move_count,move_yn,move_diagonal_location)
         yut_player[0][0] = f'({yut_playery}, {yut_playerx})'
+        
+        print("해석 결과:", yut_interpret)
+        print("%d칸 앞으로 이동"%(move_count))
         
         yut_board_coordinate()
         yut_board_coordinate_shape()

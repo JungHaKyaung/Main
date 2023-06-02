@@ -3,7 +3,7 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=230&section=header&text=Hello%20World&fontSize=80)
 
 
-## 🌏Hello, World!🌍
+## Who we are
 
 선문대학교 오픈소스 소프트웨어 팀프로젝트 4팀입니다.☺️
 
@@ -25,6 +25,7 @@
 - 윷 4개로 게임을 합니다. 
 - 윷은 윗면이 볼록하고 주로 한자가 적혀있으며, 밑면은 평평하고 4개 중 하나에는 X 표시가 있습니다. 
 - 윷놀이 규칙은 지역마다 다를 수 있으나 기본적인 규칙을 가지고 게임을 만들었습니다. 
+
 <div align=center>
 <img src = "./pictures/Yut.jpeg" width="400">
 <img src = "./pictures/playingYut.jpeg" width="350">
@@ -52,4 +53,4 @@
 ## Our skill 
 ![Python](https://img.shields.io/badge/Python-3776AB.svg?&style=for-the-badge&logo=Python&logoColor=white)
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=footer" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&&text=Thank%20you&section=footer" />
