@@ -1,0 +1,94 @@
+import pygame
+
+# 색상 상수
+BLACK = (0,0,0)
+RED = (255,0,0)
+GREEN = (0,255,0)
+BLUE = (0,0,255)
+WHITE = (255,255,255)
+
+# 전체 스크린의 크기
+SCREEN_WIDTH = 1000
+SCREEN_HEIGHT = 800
+
+# 초기화
+pygame.init()
+
+# 스크린 생성
+SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+# 스크린 배경
+SCREEN.fill(WHITE)
+
+# window의 타이틀 설정
+pygame.display.set_caption("윷놀이")
+
+# Clock 객체 생성
+clock = pygame.time.Clock()
+
+# 폰트 객체 생성
+arial_font = pygame.font.SysFont("arial",12,False,False)
+malgungothic_font = pygame.font.SysFont("malgungothic",12,False,False)
+
+# x 좌표 눈금선 그리기
+for i in range(10,1000,10):
+    if i % 50 == 0:
+        pygame.draw.line(SCREEN, BLACK, (i,0), (i,13), 2)
+    else:
+        pygame.draw.aaline(SCREEN, BLACK, (i,0), (i,10), True)
+    
+# y 좌표 눈금선 그리기
+for i in range(10,1000,10):
+    if i % 50 == 0:
+        pygame.draw.line(SCREEN, BLACK, (0,i), (13,i), 2)
+    else:
+        pygame.draw.aaline(SCREEN, BLACK, (0,i), (10,i), True)
+    
+# x좌표 눈금선 숫자 표시
+for i in range(50,1000,50):
+    text_grid_line = arial_font.render("%d"%(i),True,BLACK)
+    text_grid_line_rect = text_grid_line.get_rect()
+    text_grid_line_rect.centerx = i
+    text_grid_line_rect.y = 15
+    SCREEN.blit(text_grid_line, text_grid_line_rect)
+    
+# y좌표 눈금선 숫자 표시
+for i in range(50,1000,50):
+    text_grid_line = arial_font.render("%d"%(i),True,BLACK)
+    text_grid_line_rect = text_grid_line.get_rect()
+    text_grid_line_rect.x = 15
+    text_grid_line_rect.centery = i
+    SCREEN.blit(text_grid_line, text_grid_line_rect)
+
+playing = True
+
+while playing:
+    for event in pygame.event.get():
+        # 프로그램 창의 X를 눌렀을 때 꺼짐
+        if event.type == pygame.QUIT:
+            playing = False
+            pygame.quit()
+        if event.type == pygame.MOUSEMOTION:
+            text_mouse_coordinate = malgungothic_font.render("움직임",True,BLACK)
+            text_mouse_coordinate_rect = text_mouse_coordinate.get_rect()
+            text_mouse_coordinate_rect.x = 20
+            text_mouse_coordinate_rect.y = 40
+            SCREEN.blit(text_mouse_coordinate, text_mouse_coordinate_rect)
+        else:
+            text_mouse_coordinate = arial_font.render("NOPE",True,BLACK)
+            text_mouse_coordinate_rect = text_mouse_coordinate.get_rect()
+            text_mouse_coordinate_rect.x = 50
+            text_mouse_coordinate_rect.y = 40
+            SCREEN.blit(text_mouse_coordinate, text_mouse_coordinate_rect)
+        # 마우스 왼쪽을 눌렀을 때
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            print("마우스 왼쪽클릭")
+            print("마우스 좌표")
+            # 마우스 위치 출력
+            print(pygame.mouse.get_pos())
+    
+    # 작업한 스크린의 내용을 갱신
+    pygame.display.flip()
+    
+    # fps 설정
+    clock.tick(60)
