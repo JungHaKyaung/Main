@@ -1,0 +1,41 @@
+class Horse:
+    def __init__(self, name):
+        self.name = name
+        self.x = None
+        self.y = None
+
+    def update_position(self, x, y):
+        self.x = x
+        self.y = y
+
+class YutGame:
+    def __init__(self):
+        self.horses = []
+
+    def add_horse(self, name, x, y):
+        horse = Horse(name)
+        horse.update_position(x, y)
+        self.horses.append(horse)
+
+    def update_position(self, name, x, y):
+        for horse in self.horses:
+            if horse.name == name:
+                horse.update_position(x, y)
+
+    def print_positions(self):
+        for horse in self.horses:
+            print(f"말 이름: {horse.name}, 위치: ({horse.x}, {horse.y})")
+
+# 윷놀이 게임 실행
+game = YutGame()
+
+while True:
+    # 말 이동
+    horse_name = input("이동할 말의 이름을 입력하세요 (말이 4마리 들어오면 'q'를 입력하세요): ")
+    if horse_name.lower() == 'q':
+        break
+    x = int(input("새로운 X 좌표를 입력하세요: "))
+    y = int(input("새로운 Y 좌표를 입력하세요: "))
+
+    game.update_position(horse_name, x, y)
+    game.print_positions()
