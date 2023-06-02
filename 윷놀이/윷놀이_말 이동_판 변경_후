@@ -101,7 +101,7 @@ def move_yut(yut_result, yut_py, yut_px, move_yn, move_di_location):
         move_count = 5
         
     if move_yn == 0:
-        if (yut_py > 0) and (yut_py < 5) and (yut_px == 4):
+        if (yut_py > 1) and (yut_py < 8) and (yut_px == 6):
             if (yut_py - move_count) >= 0:
                 yut_py = yut_py - move_count
             else:
