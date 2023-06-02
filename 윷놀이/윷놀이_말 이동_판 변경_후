@@ -104,24 +104,32 @@ def move_yut(yut_result, yut_py, yut_px, move_yn, move_di_location):
         if (yut_py > 1) and (yut_py < 8) and (yut_px == 6):
             if (yut_py - move_count) >= 1:
                 yut_py = yut_py - move_count
+                if (yut_py == 4):
+                    yut_py = yut_py - 1
             else:
                 yut_px = yut_px - (move_count - yut_py)
                 yut_py = 1
         elif (yut_py == 1) and (yut_px > 0) and (yut_px < 7):
             if (yut_px - move_count) >= 0:
                 yut_px = yut_px - move_count
+                if (yut_px == 3):
+                    yut_px = yut_px - 1
             else:
                 yut_py = yut_py + (move_count - yut_px)
                 yut_px = 0
         elif (yut_py >= 1) and (yut_py < 7) and (yut_px == 0):
             if (yut_py + move_count) <= 7:
                 yut_py = yut_py + move_count
+                if (yut_py == 4):
+                    yut_py = yut_py + 1
             else:
                 yut_px = yut_px + (yut_py - move_count)
                 yut_py = 7
         elif (yut_py == 7) and (yut_px >= 0) and (yut_px < 7):
             if (yut_px + move_count) <= 6:
                 yut_px = yut_px + move_count
+                if (yut_px == 3):
+                    yut_px = yut_px + 1
             else:
                 yut_px = 6
     elif move_yn == 1:
