@@ -3,7 +3,7 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=230&section=header&text=Hello%20World&fontSize=80)
 
 
-## 🌏Hello, World!🌍
+## Who we are
 
 선문대학교 오픈소스 소프트웨어 팀프로젝트 4팀입니다.☺️
 
