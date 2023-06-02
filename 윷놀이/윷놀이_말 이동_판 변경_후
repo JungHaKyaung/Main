@@ -180,7 +180,7 @@ move_yn = 0
 move_diagonal_location = 0
 
 num_teams = 2
-num_players_per_team = int(input("한 팀에 몇 명이 들어갈지 입력하세요: "))
+num_players_per_team = int(input("%d개의 팀이 있으며, 한 팀에 몇 명이 들어갈지 입력하세요: "%(num_teams)))
 print("%d개의 팀이 있으며, 한 팀당 %d명씩 참가합니다!" % (num_teams, num_players_per_team))
 
 teams = set_teams(num_teams, num_players_per_team)
