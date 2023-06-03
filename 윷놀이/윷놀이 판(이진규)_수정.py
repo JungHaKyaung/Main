@@ -23,5 +23,5 @@ for coordinate in invalid_coordinates:
 # 판 출력
 for x in yut_board: 
     print(' '.join(x))
- 
+  
  
