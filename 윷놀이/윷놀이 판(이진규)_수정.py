@@ -23,5 +23,21 @@ for coordinate in invalid_coordinates:
 # 판 출력
 for x in yut_board: 
     print(' '.join(x))
-  
- 
+# 이동 불가능한 좌표 값을 변경
+for coordinate in invalid_coordinates:
+    x, y = coordinate
+    yut_board[x][y] = '      '
+
+# 판 출력
+for x in yut_board: 
+    print(' '.join(x))
+
+
+# 이동 불가능한 좌표 값을 변경
+for coordinate in invalid_coordinates:
+    x, y = coordinate
+    yut_board[x][y] = '      '
+
+# 판 출력
+for x in yut_board: 
+    print(' '.join(x))
