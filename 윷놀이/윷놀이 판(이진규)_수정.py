@@ -21,6 +21,6 @@ for coordinate in invalid_coordinates:
     yut_board[x][y] = '      '
 
 # 판 출력
-for x in yut_board:
+for x in yut_board: 
     print(' '.join(x))
  
