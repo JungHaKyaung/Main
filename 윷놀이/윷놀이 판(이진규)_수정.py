@@ -24,3 +24,4 @@ for coordinate in invalid_coordinates:
 for x in yut_board: 
     print(' '.join(x))
  
+ 
