@@ -1,0 +1,22 @@
+import pygame
+
+#초기화
+pygame.init()
+surface = pygame.display.set_mode((400,400))
+fpstick = pygame.time.Clock()
+
+def main():
+    mousepos = []
+    while 1:
+        surface.fill((255,255,255))
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+            elif event.type == pygame.MOUSEMOTION:
+                mousepos.append(event.pos)
+        for pos in mousepos:
+            pygame.draw.circle(surface,(0,255,0),pos,5)
+        pygame.display.update()
+        fpstick.tick(30)
+if __name__ == '__main__':
+    main()
