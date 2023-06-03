@@ -3,7 +3,7 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=230&section=header&text=Hello%20World&fontSize=80)
 
 
-## Who we are
+## 🌟Who We Are🌟
 
 선문대학교 오픈소스 소프트웨어 팀프로젝트 4팀입니다.☺️
 
@@ -32,7 +32,7 @@
 </div>
 
 
-### ✅ What we made
+### ✅ What We Made
 - 저희가 만든 윷놀이 게임은 기본적인 윷놀이 게임으로 2팀으로 진행이 됩니다. 
 - 다음은 윷놀이 게임의 규칙입니다.
 
@@ -50,7 +50,7 @@
 
 5. 한 팀의 모든 말이 윷놀이 판을 한 바퀴 돌아 시작지점으로 다시 돌아오면 게임은 끝이 납니다.
 
-## Our skill 
+## Our Skill 
 ![Python](https://img.shields.io/badge/Python-3776AB.svg?&style=for-the-badge&logo=Python&logoColor=white)
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&&text=Thank%20you&section=footer" />
