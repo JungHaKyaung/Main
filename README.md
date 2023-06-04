@@ -26,6 +26,7 @@
 - 윷은 윗면이 볼록하고 주로 한자가 적혀있으며, 밑면은 평평하고 4개 중 하나에는 X 표시가 있습니다. 
 - 윷놀이 규칙은 지역마다 다를 수 있으나 기본적인 규칙을 가지고 게임을 만들었습니다. 
 
+
 <div align=center>
 <img src = "./pictures/Yut.jpeg" width="400">
 <img src = "./pictures/playingYut.jpeg" width="350">
