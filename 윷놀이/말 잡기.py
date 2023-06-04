@@ -1,5 +1,5 @@
 # 말 잡기 함수
-# 바뀐 판에는 적용을 안해봐서 오류가 없을진 모름 
+
 def catching_a_horse(yut_py, yut_px, teams, current_team):
     catching_a_horse = None
     for team in teams.values():
