@@ -128,3 +128,4 @@ while True:
         print(f"[{teams[current_team]['name']}] 모든 말이 도착!")
 
     current_team = next_turn(current_team, num_teams)
+    
