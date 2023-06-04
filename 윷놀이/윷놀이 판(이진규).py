@@ -25,3 +25,4 @@ for x in yut_board:
     print(' '.join(x))
  
  
+   
