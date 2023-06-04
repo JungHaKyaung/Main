@@ -1,5 +1,4 @@
 # 말 잡기 함수
-
 def catching_a_horse(yut_py, yut_px, teams, current_team):
     catching_a_horse = None
     for team in teams.values():
