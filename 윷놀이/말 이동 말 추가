@@ -187,6 +187,9 @@ yut_board_print()
 move_yn = 0
 move_diagonal_location = 0
 
+move_yn2 = 0
+move_diagonal_location2 = 0
+
 num_teams = 2
 num_players_per_team = int(input("%d개의 팀이 있으며, 한 팀에 몇 명이 들어갈지 입력하세요: "%(num_teams)))
 print("%d개의 팀이 있으며, 한 팀당 %d명씩 참가합니다!" % (num_teams, num_players_per_team))
@@ -222,12 +225,12 @@ while True:
 
             print("해석 결과:", yut_interpret)
 
-            move_count,yut_playery2,yut_player2x,move_yn,move_diagonal_location = move_yut(yut_interpret,yut_player2y,yut_player2x,move_yn,move_diagonal_location)
+            move_count,yut_playery2,yut_player2x,move_yn2,move_diagonal_location2 = move_yut(yut_interpret,yut_player2y,yut_player2x,move_yn2,move_diagonal_location2)
 
             print("%d칸 앞으로 이동"%(move_count))
 
-            yut_playery,yut_playerx,move_yn,move_diagonal_location = move_diagonal(yut_playery,yut_playerx,move_count,move_yn,move_diagonal_location)
-            yut_player[0][0] = f'({yut_playery}, {yut_playerx})'
+            yut_player2y,yut_player2x,move_yn2,move_diagonal_location = move_diagonal(yut_player2y,yut_player2x,move_count,move_yn2,move_diagonal_location2)
+            yut_player2[0][0] = f'({yut_player2y}, {yut_player2x})'
             
         yut_board_coordinate()
         yut_board_coordinate_shape()
