@@ -1,0 +1,249 @@
+import random
+
+# 윷놀이 윷 정의
+yut_yut = {
+    1: "도",
+    2: "개",
+    3: "걸",
+    4: "윷",
+    5: "모"
+}
+
+#윷놀이 판 생성
+yut_board = [['-' for _ in range(7)] for _ in range(9)]
+yut_player = [['-' for _ in range(1)] for _ in range(1)]
+yut_player2 = [['-' for _ in range(1)] for _ in range(1)]
+
+yut_playerx = 6
+yut_playery = 7
+yut_player[0][0] = f'({yut_playery}, {yut_playerx})'
+
+yut_player2x = 6
+yut_player2y = 7
+yut_player2[0][0] = f'({yut_playery}, {yut_playerx})'
+
+# 판에 좌표 설정
+def yut_board_coordinate():
+    for x in range(9):
+        for y in range(7):
+            yut_board[x][y] = f'({x}, {y})'
+
+    # 이동 불가능한 좌표 설정
+    invalid_coordinates = [(0,0),(0,1),(0,2),(0,3),(0,4),(0,5),(0,6),(1,3),(7,3),(8,0),(8,1),(8,2),(8,3),(8,4),(8,5),(8,6),
+                           (2,2),(2,3),(2,4),(3,1),(3,3),(3,5),(4,0),(4,1),(4,2),(4,4),(4,5),(4,6),(5,1),(5,3),(5,5),(6,2),
+                           (6,3),(6,4)]
+    
+    # 이동 불가능한 좌표 값을 변경
+    for coordinate in invalid_coordinates:
+        x, y = coordinate
+        yut_board[x][y] = '       '
+        
+# 이동 가능한 좌표 값 모양 변경 
+def yut_board_coordinate_shape():
+    # player1
+    for x in range(9):
+        for y in range(7):
+            if yut_board[x][y] == yut_player[0][0]:
+                yut_board[x][y] = '  ◎   '
+            elif yut_board[x][y] == yut_player2[0][0]:
+                yut_board[x][y] = '  ▣   '
+            elif yut_board[x][y] != '       ':
+                yut_board[x][y] = '  ●   '
+                
+# 판 출력
+def yut_board_print():
+    for x in yut_board:
+        print(' '.join(x))
+    
+# 팀 설정
+def set_teams(num_teams, num_players_per_team):
+    teams = {}
+    for i in range(num_teams):
+        team_name = input("팀 이름을 입력하세요: ")
+        teams[i] = {"name": team_name, "score": 0, "horse_count": num_players_per_team}
+    return teams
+
+# 턴 넘어가기
+def next_turn(current_team, num_teams):
+    current_team = (current_team + 1) % num_teams
+    return current_team
+
+# 윷을 던지는 함수 정의
+def throw_yut():
+    yut_result = []
+    for i in range(4):
+        yut = random.randint(1,2)
+        yut_result.append(yut)
+    return yut_result
+
+# 윷의 결과를 해석하는 함수 정의
+def interpret_yut(yut_result):
+    back_do_count = 0
+    for yut in yut_result:
+        if yut == 1:
+            back_do_count += 1
+    if back_do_count == 0:
+        return "모"
+    elif back_do_count == 1:
+        return "걸"
+    elif back_do_count == 2:
+        return "개"
+    elif back_do_count == 3:
+        return "도"
+    else:
+        return "윷"
+
+# 말 이동 함수
+def move_yut(yut_result, yut_py, yut_px, move_yn, move_di_location):
+    move_count = 0
+    
+    if yut_result == "도":
+        move_count = 1
+    elif yut_result == "개":
+        move_count = 2
+    elif yut_result == "걸":
+        move_count = 3
+    elif yut_result == "윷":
+        move_count = 4
+    elif yut_result == "모":
+        move_count = 5
+        
+    if move_yn == 0:
+        if (yut_py > 1) and (yut_py < 8) and (yut_px == 6):
+            if (yut_py - move_count) >= 1:
+                yut_py = yut_py - move_count
+                if (yut_py == 4):
+                    yut_py = yut_py - 1
+            else:
+                yut_px = yut_px - (move_count - yut_py)
+                yut_py = 1
+        elif (yut_py == 1) and (yut_px > 0) and (yut_px < 7):
+            if (yut_px - move_count) >= 0:
+                yut_px = yut_px - move_count
+                if (yut_px == 3):
+                    yut_px = yut_px - 1
+            else:
+                yut_py = yut_py + (move_count - yut_px)
+                yut_px = 0
+        elif (yut_py >= 1) and (yut_py < 7) and (yut_px == 0):
+            if (yut_py + move_count) <= 7:
+                yut_py = yut_py + move_count
+                if (yut_py == 4):
+                    yut_py = yut_py + 1
+            else:
+                yut_px = yut_px + (yut_py - move_count)
+                yut_py = 7
+        elif (yut_py == 7) and (yut_px >= 0) and (yut_px < 7):
+            if (yut_px + move_count) <= 6:
+                yut_px = yut_px + move_count
+                if (yut_px == 3):
+                    yut_px = yut_px + 1
+            else:
+                yut_px = 6
+    elif move_yn == 1:
+        if move_di_location == 0:
+            if (yut_py + move_count <= 7) and (yut_px - move_count >= 0):
+                yut_py = yut_py + move_count
+                yut_px = yut_px - move_count
+            else:
+                yut_py = 7
+                yut_px = move_count - yut_px
+                move_yn = 0
+        elif move_di_location == 1:
+            if (yut_py + move_count <= 7) and (yut_px - move_count <= 7):
+                yut_py = yut_py + move_count
+                yut_px = yut_px + move_count
+            else:
+                yut_py = 7
+                yut_px = 7
+                move_yn = 0
+        
+    return move_count,yut_py,yut_px,move_yn,move_di_location
+
+# 대각선 이동 함수
+def move_diagonal(yut_py,yut_px,move_cnt,move_yn,move_di_location):
+    if ((yut_py == 1) and (yut_px == 6)) or ((yut_py == 1) and (yut_px == 0)):
+        yut_board_coordinate()
+        yut_board_coordinate_shape()
+        yut_board_print()
+        move_yn = int(input("대각선으로 가시겠습니까?(0 = NO, 1 = YES) : "))
+        if move_yn == 1:
+            print("대각선으로 갑니다")
+            if (yut_py == 1) and (yut_px == 6):
+                move_di_location = 0
+            elif (yut_py == 1) and (yut_px == 0):
+                move_di_location = 1
+        else:
+            print("그냥 지나갑니다")
+    
+    return yut_py,yut_px,move_yn,move_di_location
+    
+# 윷놀이 실행
+# 윷놀이 실행
+yut_board_coordinate()
+yut_board_coordinate_shape()
+yut_board_print()
+
+move_yn = 0
+move_diagonal_location = 0
+
+num_teams = 2
+num_players_per_team = int(input("%d개의 팀이 있으며, 한 팀에 몇 명이 들어갈지 입력하세요: "%(num_teams)))
+print("%d개의 팀이 있으며, 한 팀당 %d명씩 참가합니다!" % (num_teams, num_players_per_team))
+
+teams = set_teams(num_teams, num_players_per_team)
+current_team = int(input("먼저 시작할 팀을 선택하세요 (0 또는 1): "))
+
+while True:
+    current_team_name = teams[current_team]["name"]
+    
+    enter_button = input(f"{current_team_name} 팀의 차례입니다. Enter를 누르면 윷을 던집니다. (아무거나 입력하면 종료됩니다.)")
+    
+    if enter_button == "":
+        if current_team == 0:
+            yut_result = throw_yut()
+            print("윷의 결과:", yut_result)
+
+            yut_interpret = interpret_yut(yut_result)
+
+            print("해석 결과:", yut_interpret)
+
+            move_count,yut_playery,yut_playerx,move_yn,move_diagonal_location = move_yut(yut_interpret,yut_playery,yut_playerx,move_yn,move_diagonal_location)
+
+            print("%d칸 앞으로 이동"%(move_count))
+
+            yut_playery,yut_playerx,move_yn,move_diagonal_location = move_diagonal(yut_playery,yut_playerx,move_count,move_yn,move_diagonal_location)
+            yut_player[0][0] = f'({yut_playery}, {yut_playerx})'
+        elif current_team == 1:
+            yut_result = throw_yut()
+            print("윷의 결과:", yut_result)
+
+            yut_interpret = interpret_yut(yut_result)
+
+            print("해석 결과:", yut_interpret)
+
+            move_count,yut_playery2,yut_player2x,move_yn,move_diagonal_location = move_yut(yut_interpret,yut_player2y,yut_player2x,move_yn,move_diagonal_location)
+
+            print("%d칸 앞으로 이동"%(move_count))
+
+            yut_playery,yut_playerx,move_yn,move_diagonal_location = move_diagonal(yut_playery,yut_playerx,move_count,move_yn,move_diagonal_location)
+            yut_player[0][0] = f'({yut_playery}, {yut_playerx})'
+            
+        yut_board_coordinate()
+        yut_board_coordinate_shape()
+        yut_board_print()
+        
+        if yut_interpret == "잘못된 결과입니다.":
+            break
+        elif yut_interpret == "도":
+            print("한 바퀴 돌았습니다!")
+        elif yut_interpret == "모":
+            print("한 바퀴 돌았으며, 한 번 더 던집니다.")
+        else:
+            continue
+            
+        teams[current_team]["score"] += 1
+        current_team = next_turn(current_team, num_teams)
+    else:
+        print("END")
+        break
