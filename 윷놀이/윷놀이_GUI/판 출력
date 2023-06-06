@@ -100,6 +100,17 @@ def move_yut(yut_result):
     
     return move_count
 
+# myFont를 surface에 그리기
+def render_draw():
+    text_Title = myFont.render("윷놀이",True,WHITE)
+    text_system = myFont.render("SYSTEM",True,WHITE)
+    text_guide = small_font.render("%s"%(system_guide),True,GREEN)
+    text_yut_result = small_font.render("%s"%(system_yut_result),True,GREEN)
+    text_yut_interpret = small_font.render("%s"%(system_yut_interpret),True,GREEN)
+    text_move_count = small_font.render("%s"%(system_move_count),True,GREEN)
+    text_team1_name = myFont.render("%s팀"%(teams[0]["name"]),True,WHITE)
+    text_team2_name = myFont.render("%s팀"%(teams[1]["name"]),True,WHITE)
+
 # Rect 생성
 def rect_create():
     text_Rect = text_Title.get_rect()
@@ -231,14 +242,7 @@ while playing:
     pygame.draw.line(SCREEN, WHITE, (0, 100),(800,100),2)
     
     # myFont를 surface에 그리기
-    text_Title = myFont.render("윷놀이",True,WHITE)
-    text_system = myFont.render("SYSTEM",True,WHITE)
-    text_guide = small_font.render("%s"%(system_guide),True,GREEN)
-    text_yut_result = small_font.render("%s"%(system_yut_result),True,GREEN)
-    text_yut_interpret = small_font.render("%s"%(system_yut_interpret),True,GREEN)
-    text_move_count = small_font.render("%s"%(system_move_count),True,GREEN)
-    text_team1_name = myFont.render("%s팀"%(teams[0]["name"]),True,WHITE)
-    text_team2_name = myFont.render("%s팀"%(teams[1]["name"]),True,WHITE)
+    render_draw()
     
     # Rect 생성
     rect_create()
