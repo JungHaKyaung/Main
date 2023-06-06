@@ -229,7 +229,7 @@ while True:
 
             print("%d칸 앞으로 이동"%(move_count))
 
-            yut_player2y,yut_player2x,move_yn2,move_diagonal_location = move_diagonal(yut_player2y,yut_player2x,move_count,move_yn2,move_diagonal_location2)
+            yut_player2y,yut_player2x,move_yn2,move_diagonal_location2 = move_diagonal(yut_player2y,yut_player2x,move_count,move_yn2,move_diagonal_location2)
             yut_player2[0][0] = f'({yut_player2y}, {yut_player2x})'
             
         yut_board_coordinate()
