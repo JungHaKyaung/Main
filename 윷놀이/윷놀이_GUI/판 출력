@@ -30,15 +30,6 @@ def yut_board_coordinate():
     for coordinate in invalid_coordinates:
         x, y = coordinate
         yut_board[x][y] = '       '
-        
-# 이동 가능한 좌표 값 모양 변경
-def yut_board_coordinate_shape():
-    for x in range(9):
-        for y in range(7):
-            if yut_board[x][y] == yut_player[0][0]:
-                yut_board[x][y] = '  ◎   '
-            elif yut_board[x][y] != '       ':
-                yut_board[x][y] = '  ●   '
                 
 # 판 출력
 def yut_board_print():
@@ -101,6 +92,9 @@ def move_yut(yut_result):
     return move_count
 
 # 윷놀이 실행
+yut_board_coordinate()
+yut_board_print()
+
 num_teams = 2
 num_players_per_team = int(input("한 팀에 몇 명이 들어갈지 입력하세요: "))
 print("%d개의 팀이 있으며, 한 팀당 %d명씩 참가합니다!" % (num_teams, num_players_per_team))
@@ -132,15 +126,241 @@ clock = pygame.time.Clock()
 # 이미지 로드
 yut_enter_button = pygame.image.load("yut_enter_button.png")
 
+# 오른쪽 세로
+yut_circle1 = pygame.image.load("yut_circle.png")
+yut_circle2 = pygame.image.load("yut_circle.png")
+yut_circle3 = pygame.image.load("yut_circle.png")
+yut_circle4 = pygame.image.load("yut_circle.png")
+yut_circle5 = pygame.image.load("yut_circle.png")
+yut_circle6 = pygame.image.load("yut_circle.png")
+
+# 위 가로
+yut_circle7 = pygame.image.load("yut_circle.png")
+yut_circle8 = pygame.image.load("yut_circle.png")
+yut_circle9 = pygame.image.load("yut_circle.png")
+yut_circle10 = pygame.image.load("yut_circle.png")
+
+# 왼쪽 세로
+yut_circle11 = pygame.image.load("yut_circle.png")
+yut_circle12 = pygame.image.load("yut_circle.png")
+yut_circle13 = pygame.image.load("yut_circle.png")
+yut_circle14 = pygame.image.load("yut_circle.png")
+yut_circle15 = pygame.image.load("yut_circle.png")
+yut_circle16 = pygame.image.load("yut_circle.png")
+
+# 아래 가로
+yut_circle17 = pygame.image.load("yut_circle.png")
+yut_circle18 = pygame.image.load("yut_circle.png")
+yut_circle19 = pygame.image.load("yut_circle.png")
+yut_circle20 = pygame.image.load("yut_circle.png")
+
+# 대각선 왼쪽에서 오른쪽
+yut_circle21 = pygame.image.load("yut_circle.png")
+yut_circle22 = pygame.image.load("yut_circle.png")
+
+# 대각선 중심
+yut_circle23 = pygame.image.load("yut_circle.png")
+
+yut_circle24 = pygame.image.load("yut_circle.png")
+yut_circle25 = pygame.image.load("yut_circle.png")
+
+# 대각선 오른쪽에서 왼쪽
+yut_circle26 = pygame.image.load("yut_circle.png")
+yut_circle27 = pygame.image.load("yut_circle.png")
+yut_circle29 = pygame.image.load("yut_circle.png")
+yut_circle30 = pygame.image.load("yut_circle.png")
+
 # 이미지 크기 변경
 yut_enter_button = pygame.transform.scale(yut_enter_button,(120,90))
+
+# 오른쪽 세로
+yut_circle1 = pygame.transform.scale(yut_circle1,(50,50))
+yut_circle2 = pygame.transform.scale(yut_circle2,(50,50))
+yut_circle3 = pygame.transform.scale(yut_circle3,(50,50))
+yut_circle4 = pygame.transform.scale(yut_circle4,(50,50))
+yut_circle5 = pygame.transform.scale(yut_circle5,(50,50))
+yut_circle6 = pygame.transform.scale(yut_circle6,(50,50))
+
+# 위 가로
+yut_circle7 = pygame.transform.scale(yut_circle7,(50,50))
+yut_circle8 = pygame.transform.scale(yut_circle8,(50,50))
+yut_circle9 = pygame.transform.scale(yut_circle9,(50,50))
+yut_circle10 = pygame.transform.scale(yut_circle10,(50,50))
+
+# 왼쪽 세로
+yut_circle11 = pygame.transform.scale(yut_circle11,(50,50))
+yut_circle12 = pygame.transform.scale(yut_circle12,(50,50))
+yut_circle13 = pygame.transform.scale(yut_circle13,(50,50))
+yut_circle14 = pygame.transform.scale(yut_circle14,(50,50))
+yut_circle15 = pygame.transform.scale(yut_circle15,(50,50))
+yut_circle16 = pygame.transform.scale(yut_circle16,(50,50))
+
+# 아래 가로
+yut_circle17 = pygame.transform.scale(yut_circle17,(50,50))
+yut_circle18 = pygame.transform.scale(yut_circle18,(50,50))
+yut_circle19 = pygame.transform.scale(yut_circle19,(50,50))
+yut_circle20 = pygame.transform.scale(yut_circle20,(50,50))
+
+# 대각선 왼쪽에서 오른쪽
+yut_circle21 = pygame.transform.scale(yut_circle21,(50,50))
+yut_circle22 = pygame.transform.scale(yut_circle22,(50,50))
+
+# 대각선 중심
+yut_circle23 = pygame.transform.scale(yut_circle23,(50,50))
+
+yut_circle24 = pygame.transform.scale(yut_circle24,(50,50))
+yut_circle25 = pygame.transform.scale(yut_circle25,(50,50))
+
+# 대각선 오른쪽에서 왼쪽
+yut_circle26 = pygame.transform.scale(yut_circle26,(50,50))
+yut_circle27 = pygame.transform.scale(yut_circle27,(50,50))
+yut_circle29 = pygame.transform.scale(yut_circle29,(50,50))
+yut_circle30 = pygame.transform.scale(yut_circle30,(50,50))
 
 # 이미지의 Rect 정보를 저장
 yut_enter_button_Rect = yut_enter_button.get_rect()
 
+# 오른쪽 세로
+yut_circle1_rect = yut_circle1.get_rect()
+yut_circle2_rect = yut_circle2.get_rect()
+yut_circle3_rect = yut_circle3.get_rect()
+yut_circle4_rect = yut_circle4.get_rect()
+yut_circle5_rect = yut_circle5.get_rect()
+yut_circle6_rect = yut_circle6.get_rect()
+
+# 위 가로
+yut_circle7_rect = yut_circle7.get_rect()
+yut_circle8_rect = yut_circle8.get_rect()
+yut_circle9_rect = yut_circle9.get_rect()
+yut_circle10_rect = yut_circle10.get_rect()
+
+# 왼쪽 세로
+yut_circle11_rect = yut_circle11.get_rect()
+yut_circle12_rect = yut_circle12.get_rect()
+yut_circle13_rect = yut_circle13.get_rect()
+yut_circle14_rect = yut_circle14.get_rect()
+yut_circle15_rect = yut_circle15.get_rect()
+yut_circle16_rect = yut_circle16.get_rect()
+
+# 아래 가로
+yut_circle17_rect = yut_circle17.get_rect()
+yut_circle18_rect = yut_circle18.get_rect()
+yut_circle19_rect = yut_circle19.get_rect()
+yut_circle20_rect = yut_circle20.get_rect()
+
+# 대각선 왼쪽에서 오른쪽
+yut_circle21_rect = yut_circle21.get_rect()
+yut_circle22_rect = yut_circle22.get_rect()
+
+# 대각선 중심
+yut_circle23_rect = yut_circle23.get_rect()
+
+yut_circle24_rect = yut_circle24.get_rect()
+yut_circle25_rect = yut_circle25.get_rect()
+
+# 대각선 오른쪽에서 왼쪽
+yut_circle26_rect = yut_circle26.get_rect()
+yut_circle27_rect = yut_circle27.get_rect()
+yut_circle29_rect = yut_circle29.get_rect()
+yut_circle30_rect = yut_circle30.get_rect()
+
 # 이미지 좌표값 수정
 yut_enter_button_Rect.centerx = round(SCREEN_WIDTH / 2)
 yut_enter_button_Rect.bottom = round(800)
+
+# 오른족 세로
+yut_circle1_rect.x = 800
+yut_circle1_rect.y = 650
+
+yut_circle2_rect.x = 800
+yut_circle2_rect.y = 550
+
+yut_circle3_rect.x = 800
+yut_circle3_rect.y = 450
+
+yut_circle4_rect.x = 800
+yut_circle4_rect.y = 350
+
+yut_circle5_rect.x = 800
+yut_circle5_rect.y = 250
+
+yut_circle6_rect.x = 800
+yut_circle6_rect.y = 150
+
+# 위 가로
+yut_circle7_rect.x = 684
+yut_circle7_rect.y = 150
+
+yut_circle8_rect.x = 530
+yut_circle8_rect.y = 150
+
+yut_circle9_rect.x = 384
+yut_circle9_rect.y = 150
+
+yut_circle10_rect.x = 252
+yut_circle10_rect.y = 150
+
+# 왼쪽 세로
+yut_circle11_rect.x = 120
+yut_circle11_rect.y = 650
+
+yut_circle12_rect.x = 120
+yut_circle12_rect.y = 550
+
+yut_circle13_rect.x = 120
+yut_circle13_rect.y = 450
+
+yut_circle14_rect.x = 120
+yut_circle14_rect.y = 350
+
+yut_circle15_rect.x = 120
+yut_circle15_rect.y = 250
+
+yut_circle16_rect.x = 120
+yut_circle16_rect.y = 150
+
+# 아래 가로
+yut_circle17_rect.x = 684
+yut_circle17_rect.y = 650
+
+yut_circle18_rect.x = 530
+yut_circle18_rect.y = 650
+
+yut_circle19_rect.x = 384
+yut_circle19_rect.y = 650
+
+yut_circle20_rect.x = 252
+yut_circle20_rect.y = 650
+
+# 대각선 왼쪽에서 오른쪽
+yut_circle21_rect.x = 180
+yut_circle21_rect.y = 200
+
+yut_circle22_rect.x = 320
+yut_circle22_rect.y = 300
+
+# 대각선 중심
+yut_circle23_rect.x = 460
+yut_circle23_rect.y = 400
+
+yut_circle24_rect.x = 600
+yut_circle24_rect.y = 500
+
+yut_circle25_rect.x = 740
+yut_circle25_rect.y = 600
+
+# 대각선 오른쪽에서 왼쪽
+yut_circle26_rect.x = 740
+yut_circle26_rect.y = 200
+
+yut_circle27_rect.x = 600
+yut_circle27_rect.y = 300
+
+yut_circle29_rect.x = 320
+yut_circle29_rect.y = 500
+
+yut_circle30_rect.x = 180
+yut_circle30_rect.y = 600
 
 dx = 0
 dy = 0
@@ -188,20 +408,6 @@ while playing:
             # m_move를 False로
             m_move = False
             pygame.mouse.set_cursor(*pygame.cursors.arrow)
-        # 키를 눌렀을 경우
-        if event.type == pygame.KEYDOWN:
-            # 입력된 텍스트 출력후 초기화
-            if event.key == pygame.K_RETURN:
-                print(text1)
-                text1 = ""
-                # 맨 끝 글자 지우기
-            elif event.key == pygame.K_BACKSPACE:
-                text1 = text1[:-1]
-            else:
-                # 글자 하나하나 입력받기
-                text1 += event.unicode
-                
-            text1_surface = myFont.render(text1, True, WHITE)
     
     current_team_name = teams[current_team]["name"]
     
@@ -214,11 +420,12 @@ while playing:
         move_count = move_yut(yut_interpret)
         system_yut_interpret = "해석 결과 : %s"%(yut_interpret)
         system_move_count = "%d칸 앞으로 이동"%(move_count)
+        
+        yut_board_coordinate()
+        yut_board_print()
+        
         teams[current_team]["score"] += 1
         current_team = next_turn(current_team, num_teams)
-        
-    # 배경 나누는 선
-    pygame.draw.line(SCREEN, BLACK, (0, 100),(800,100),2)
     
     # myFont를 surface에 그리기
     text_Title = myFont.render("윷놀이",True,BLACK)
@@ -242,7 +449,7 @@ while playing:
     text_Rect.centerx = round(SCREEN_WIDTH / 2)
     text_Rect.centery = 20
     text_guide_Rect.centerx = round(SCREEN_WIDTH / 2)
-    text_guide_Rect.y = 200
+    text_guide_Rect.y = 40
     text_yut_result_Rect.centerx = round(SCREEN_WIDTH / 2)
     text_yut_result_Rect.y = 250
     text_yut_interpret_Rect.centerx = round(SCREEN_WIDTH / 2)
@@ -257,6 +464,13 @@ while playing:
     # 스크린 배경색
     SCREEN.fill(soft_green)
     
+    # 배경 나누는 선
+    pygame.draw.line(SCREEN, BLACK, (0,40),(1000,40),2)
+    pygame.draw.line(SCREEN, BLACK, (120,0),(120,800),2)
+    pygame.draw.line(SCREEN, BLACK, (850,0),(850,800),2)
+    pygame.draw.line(SCREEN, BLACK, (0,700),(1000,700),2)
+    pygame.draw.line(SCREEN, BLACK, (0,150),(1000,150),2)
+    
     # Text Surface SCREEN에 복사하기, Rect 사용
     SCREEN.blit(text_Title, text_Rect)
     SCREEN.blit(text1_surface, (200,300))
@@ -266,7 +480,53 @@ while playing:
     SCREEN.blit(text_move_count, text_move_count_Rect)
     SCREEN.blit(text_team1_name, text_team1_name_Rect)
     SCREEN.blit(text_team2_name, text_team2_name_Rect)
+    
+    # 이미지 blit
     SCREEN.blit(yut_enter_button, yut_enter_button_Rect)
+    
+    # 오른쪽 세로
+    SCREEN.blit(yut_circle1, yut_circle1_rect)
+    SCREEN.blit(yut_circle2, yut_circle2_rect)
+    SCREEN.blit(yut_circle3, yut_circle3_rect)
+    SCREEN.blit(yut_circle4, yut_circle4_rect)
+    SCREEN.blit(yut_circle5, yut_circle5_rect)
+    SCREEN.blit(yut_circle6, yut_circle6_rect)
+    
+    # 위 가로
+    SCREEN.blit(yut_circle7, yut_circle7_rect)
+    SCREEN.blit(yut_circle8, yut_circle8_rect)
+    SCREEN.blit(yut_circle9, yut_circle9_rect)
+    SCREEN.blit(yut_circle10, yut_circle10_rect)
+    
+    # 왼쪽 세로
+    SCREEN.blit(yut_circle11, yut_circle11_rect)
+    SCREEN.blit(yut_circle12, yut_circle12_rect)
+    SCREEN.blit(yut_circle13, yut_circle13_rect)
+    SCREEN.blit(yut_circle14, yut_circle14_rect)
+    SCREEN.blit(yut_circle15, yut_circle15_rect)
+    SCREEN.blit(yut_circle16, yut_circle16_rect)
+    
+    # 아래 가로
+    SCREEN.blit(yut_circle17, yut_circle17_rect)
+    SCREEN.blit(yut_circle18, yut_circle18_rect)
+    SCREEN.blit(yut_circle19, yut_circle19_rect)
+    SCREEN.blit(yut_circle20, yut_circle20_rect)
+    
+    # 대각선 왼쪽에서 오른쪽
+    SCREEN.blit(yut_circle21, yut_circle21_rect)
+    SCREEN.blit(yut_circle22, yut_circle22_rect)
+    
+    # 대각선 중심
+    SCREEN.blit(yut_circle23, yut_circle23_rect)
+    
+    SCREEN.blit(yut_circle24, yut_circle24_rect)
+    SCREEN.blit(yut_circle25, yut_circle25_rect)
+    
+    # 대각선 오른쪽에서 왼쪽
+    SCREEN.blit(yut_circle26, yut_circle26_rect)
+    SCREEN.blit(yut_circle27, yut_circle27_rect)
+    SCREEN.blit(yut_circle29, yut_circle29_rect)
+    SCREEN.blit(yut_circle30, yut_circle30_rect)
     
     # 작업한 스크린의 내용을 갱신하기
     pygame.display.flip()
