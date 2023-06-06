@@ -12,39 +12,6 @@ yut_board = {
     5: "모"
 }
 
-#윷놀이 판 생성
-yut_board = [['-' for _ in range(7)] for _ in range(9)]
-
-# 판에 좌표 설정
-def yut_board_coordinate():
-    for x in range(9):
-        for y in range(7):
-            yut_board[x][y] = f'({x}, {y})'
-
-    # 이동 불가능한 좌표 설정
-    invalid_coordinates = [(0,0),(0,1),(0,2),(0,3),(0,4),(0,5),(0,6),(1,3),(7,3),(8,0),(8,1),(8,2),(8,3),(8,4),(8,5),(8,6),
-                           (2,2),(2,3),(2,4),(3,1),(3,3),(3,5),(4,0),(4,1),(4,2),(4,4),(4,5),(4,6),(5,1),(5,3),(5,5),(6,2),
-                           (6,3),(6,4)]
-    
-    # 이동 불가능한 좌표 값을 변경
-    for coordinate in invalid_coordinates:
-        x, y = coordinate
-        yut_board[x][y] = '       '
-
-# 이동 가능한 좌표 값 모양 변경
-def yut_board_coordinate_shape():
-    for x in range(9):
-        for y in range(7):
-            if yut_board[x][y] == yut_player[0][0]:
-                yut_board[x][y] = '  ◎   '
-            elif yut_board[x][y] != '       ':
-                yut_board[x][y] = '  ●   '
-                
-# 판 출력
-def yut_board_print():
-    for x in yut_board:
-        print(' '.join(x))
-
 # 팀 설정
 def set_teams(num_teams, num_players_per_team):
     teams = {}
@@ -99,28 +66,6 @@ def move_yut(yut_result):
         move_count = 5
     
     return move_count
-
-# myFont를 surface에 그리기
-def render_draw():
-    text_Title = myFont.render("윷놀이",True,WHITE)
-    text_system = myFont.render("SYSTEM",True,WHITE)
-    text_guide = small_font.render("%s"%(system_guide),True,GREEN)
-    text_yut_result = small_font.render("%s"%(system_yut_result),True,GREEN)
-    text_yut_interpret = small_font.render("%s"%(system_yut_interpret),True,GREEN)
-    text_move_count = small_font.render("%s"%(system_move_count),True,GREEN)
-    text_team1_name = myFont.render("%s팀"%(teams[0]["name"]),True,WHITE)
-    text_team2_name = myFont.render("%s팀"%(teams[1]["name"]),True,WHITE)
-
-# Rect 생성
-def rect_create():
-    text_Rect = text_Title.get_rect()
-    text_system_Rect = text_system.get_rect()
-    text_guide_Rect = text_guide.get_rect()
-    text_yut_result_Rect = text_yut_result.get_rect()
-    text_yut_interpret_Rect = text_yut_interpret.get_rect()
-    text_move_count_Rect = text_move_count.get_rect()
-    text_team1_name_Rect = text_team1_name.get_rect()
-    text_team2_name_Rect = text_team2_name.get_rect()
 
 # 윷놀이 실행
 num_teams = 2
@@ -242,10 +187,24 @@ while playing:
     pygame.draw.line(SCREEN, WHITE, (0, 100),(800,100),2)
     
     # myFont를 surface에 그리기
-    render_draw()
+    text_Title = myFont.render("윷놀이",True,WHITE)
+    text_system = myFont.render("SYSTEM",True,WHITE)
+    text_guide = small_font.render("%s"%(system_guide),True,GREEN)
+    text_yut_result = small_font.render("%s"%(system_yut_result),True,GREEN)
+    text_yut_interpret = small_font.render("%s"%(system_yut_interpret),True,GREEN)
+    text_move_count = small_font.render("%s"%(system_move_count),True,GREEN)
+    text_team1_name = myFont.render("%s팀"%(teams[0]["name"]),True,WHITE)
+    text_team2_name = myFont.render("%s팀"%(teams[1]["name"]),True,WHITE)
     
     # Rect 생성
-    rect_create()
+    text_Rect = text_Title.get_rect()
+    text_system_Rect = text_system.get_rect()
+    text_guide_Rect = text_guide.get_rect()
+    text_yut_result_Rect = text_yut_result.get_rect()
+    text_yut_interpret_Rect = text_yut_interpret.get_rect()
+    text_move_count_Rect = text_move_count.get_rect()
+    text_team1_name_Rect = text_team1_name.get_rect()
+    text_team2_name_Rect = text_team2_name.get_rect()
     
     # Rect 위치
     text_Rect.centerx = round(SCREEN_WIDTH / 2)
@@ -266,7 +225,7 @@ while playing:
     text_team2_name_Rect.y = 80
     
     # 스크린 배경색
-    SCREEN.fill(BLACK)
+    SCREEN.fill(WHITE)
     
     # Text Surface SCREEN에 복사하기, Rect 사용
     SCREEN.blit(text_Title, text_Rect)
