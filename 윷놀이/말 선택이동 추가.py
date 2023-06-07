@@ -11,7 +11,7 @@ yut_board = {
     6: "도착"
 }
 
-player_positions = [[0, 0, 0] for _ in range(2)]  # 플레이어 위치
+player_positions = [[0, 0, 0] for _ in range(2)]  # 플레이어 위치 
 
 
 # 팀 설정
