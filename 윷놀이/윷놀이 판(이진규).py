@@ -2,7 +2,7 @@
 # 근데 말 이동을 수정하기 불편해보임
 
 #윷놀이 판 생성
-yut_board = [['-' for _ in range(7)] for _ in range(9)]   
+yut_board = [['-' for _ in range(7)] for _ in range(9)]    
              
             
 # 판에 좌표 설정  
