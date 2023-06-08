@@ -11,7 +11,7 @@ yut_board = {
     4: "윷",
     5: "모"
 }
-
+ 
 # 팀 설정
 def set_teams(num_teams, num_players_per_team):
     teams = {}
