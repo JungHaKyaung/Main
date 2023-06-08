@@ -9,7 +9,7 @@ yut_board = {
     5: "모"
 }
  
-# 윷을 던지는 함수 정의
+# 윷을 던지는 함수 정의 
 def throw_yut():
     yut_result = []
     for i in range(4):
