@@ -29,7 +29,7 @@ invalid_coordinates = [(0,0),(0,1),(0,2),(0,3),(0,4),(0,5),(0,6),(1,3),(7,3),(8,
  
     
 # 이동 불가능한 좌표 값을 변경
-for coordinate in invalid_coordinates:
+for coordinate in invalid_coordinates:  
     x, y = coordinate           
     yut_board[x][y] = '      '
 
