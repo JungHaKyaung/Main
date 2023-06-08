@@ -5,7 +5,7 @@ class Horse:
         self.y = None
 
     def update_position(self, x, y):
-        self.x = x
+        self.x = x 
         self.y = y
 
 class YutGame:
