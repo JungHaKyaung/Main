@@ -9,7 +9,7 @@ def catching_a_horse(yut_py, yut_px, teams, current_team):
                     break   
             if catching_a_horse:        
                 break                    
-    return catching_a_horse               
+    return catching_a_horse                
                
                
 #윷놀이 판 생성  
