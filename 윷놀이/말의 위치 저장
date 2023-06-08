@@ -39,3 +39,6 @@ while True:
 
     game.update_position(horse_name, x, y)
     game.print_positions()
+                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                 
