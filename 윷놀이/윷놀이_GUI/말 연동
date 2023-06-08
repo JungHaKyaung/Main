@@ -215,6 +215,24 @@ def yut_player_location(yut_py, yut_px, yut_pcn):
         yut_pcn = 18
     elif (yut_py, yut_px) == (7,5):
         yut_pcn = 19
+    elif (yut_py, yut_px) == (2,1):
+        yut_pcn = 20
+    elif (yut_py, yut_px) == (3,2):
+        yut_pcn = 21
+    elif (yut_py, yut_px) == (4,3):
+        yut_pcn = 22
+    elif (yut_py, yut_px) == (5,4):
+        yut_pcn = 23
+    elif (yut_py, yut_px) == (6,5):
+        yut_pcn = 24
+    elif (yut_py, yut_px) == (2,5):
+        yut_pcn = 25
+    elif (yut_py, yut_px) == (3,4):
+        yut_pcn = 26
+    elif (yut_py, yut_px) == (5,2):
+        yut_pcn = 27
+    elif (yut_py, yut_px) == (6,1):
+        yut_pcn = 28
     
     return yut_py, yut_px, yut_pcn
 
@@ -279,6 +297,33 @@ def yut_pcn_r(yut_pcn,yut_pcx,yut_pcy):
     elif yut_pcn == 19:
         yut_pcx = 684
         yut_pcy = 650
+    elif yut_pcn == 20:
+        yut_pcx = 180
+        yut_pcy = 200
+    elif yut_pcn == 21:
+        yut_pcx = 320
+        yut_pcy = 300
+    elif yut_pcn == 22:
+        yut_pcx = 460
+        yut_pcy = 400
+    elif yut_pcn == 23:
+        yut_pcx = 600
+        yut_pcy = 500
+    elif yut_pcn == 24:
+        yut_pcx = 740
+        yut_pcy = 600
+    elif yut_pcn == 25:
+        yut_pcx = 740
+        yut_pcy = 200
+    elif yut_pcn == 26:
+        yut_pcx = 600
+        yut_pcy = 300
+    elif yut_pcn == 27:
+        yut_pcx = 320
+        yut_pcy = 500
+    elif yut_pcn == 28:
+        yut_pcx = 180
+        yut_pcy = 600
     
     return yut_pcn,yut_pcx,yut_pcy
 
@@ -573,6 +618,8 @@ yut_circle30_rect.y = 600
 dx = 0
 dy = 0
 
+cnt_s = 0
+
 system_yut_result = ""
 system_yut_interpret = ""
 system_move_count = ""
@@ -590,6 +637,8 @@ small_font = pygame.font.SysFont("malgungothic",15,True,False)
 # 폰트 랜더링
 text1_surface = myFont.render(text1, True, WHITE)
 
+yut_enter_button_sw = False
+
 playing = True
 
 while playing:
@@ -605,17 +654,20 @@ while playing:
             pygame.mouse.get_rel()
             # 마우스의 포지션을 받아서 mouse_pos에 저장
             mouse_pos = pygame.mouse.get_pos()
-            # 마우스 포지션이 image의 Rect 안에 들어오는지
-            # mouse_pos[0]은 x좌표값, mouse_pos[1]은 y 좌표값
+            # 마우스 포지션이 image의 Rect 안에 들어오는지 mouse_pos[0]은 x좌표값, mouse_pos[1]은 y 좌표값
             if mouse_pos[0] > yut_enter_button_Rect.left and mouse_pos[0] < yut_enter_button_Rect.right and mouse_pos[1] > yut_enter_button_Rect.top and mouse_pos[1] < yut_enter_button_Rect.bottom:
                 # 마우스 포지션이 image의 Rect안에 있으면 m_move를 True로 전환
                 m_move = True
                 # 마우스 커서 모양 변경
                 pygame.mouse.set_cursor(*pygame.cursors.tri_left)
+                yut_enter_button_sw = True
+                cnt_s = 0
+                cnt_time_sw = 0
         if event.type == pygame.MOUSEBUTTONUP:
             # m_move를 False로
             m_move = False
             pygame.mouse.set_cursor(*pygame.cursors.arrow)
+            mouse_down_sw = 0
     
     current_team_name = teams[current_team]["name"]
     
@@ -705,6 +757,16 @@ while playing:
     SCREEN.blit(text_team2_name, text_team2_name_Rect)
     
     # 이미지 blit
+    if yut_enter_button_sw == False:
+        yut_enter_button_Rect.centerx = round(SCREEN_WIDTH / 2)
+        yut_enter_button_Rect.bottom = round(800)
+        SCREEN.blit(yut_enter_button, yut_enter_button_Rect)
+    elif yut_enter_button_sw == True:
+        if cnt_time_sw == 0:
+            yut_enter_button_Rect.right = 0
+            yut_enter_button_Rect.bottom = 0
+        elif cnt_time_sw == 1:
+            yut_enter_button_sw = False
     SCREEN.blit(yut_enter_button, yut_enter_button_Rect)
     
     # 오른쪽 세로
@@ -753,6 +815,12 @@ while playing:
     
     # 플레이어
     SCREEN.blit(yut_player_circle, yut_player_circle_rect)
+    
+    # 초 세기
+    cnt_s = cnt_s + 1
+    if cnt_s == 60:
+        cnt_s = 0
+        cnt_time_sw = 1
     
     # 작업한 스크린의 내용을 갱신하기
     pygame.display.flip()
