@@ -8,7 +8,7 @@ def catching_a_horse(yut_py, yut_px, teams, current_team):
                     catching_a_horse = (team["name"], i) 
                     break  
             if catching_a_horse: 
-                break 
+                break  
     return catching_a_horse  
  
      
