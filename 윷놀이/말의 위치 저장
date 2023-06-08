@@ -1,5 +1,5 @@
 class Horse:
-    def __init__(self, name):
+    def __init__(self, name): 
         self.name = name
         self.x = None
         self.y = None
