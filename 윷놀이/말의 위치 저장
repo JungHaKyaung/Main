@@ -7,7 +7,7 @@ class Horse:
     def update_position(self, x, y):
         self.x = x
         self.y = y
-
+ 
 class YutGame:
     def __init__(self):
         self.horses = []
