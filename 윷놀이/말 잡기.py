@@ -11,7 +11,7 @@ def catching_a_horse(yut_py, yut_px, teams, current_team):
                 break                      
     return catching_a_horse                   
                   
-                 
+                  
 #윷놀이 판 생성   
 yut_board = [['-' for _ in range(7)] for _ in range(9)]             
              
