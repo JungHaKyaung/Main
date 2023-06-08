@@ -4,7 +4,7 @@ def throw_yut():
     yut_results = ['도', '개', '걸', '윷', '모', '백도', '낙']
     result = random.choice(yut_results)
     return result
-
+ 
 def move_forward(steps):
     # 앞으로 steps 칸 이동하는 코드 작성
     pass
