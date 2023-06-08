@@ -1,7 +1,7 @@
 class SaveAndUse:       
     def __init__( self ):
         self.haveYuts = []
-       
+        
     def insert(self, yut) :  
         self.haveYuts.append(yut)
         
