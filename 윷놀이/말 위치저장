@@ -21,7 +21,7 @@ class YutGame:
         for horse in self.horses:
             if horse.name == name:
                 horse.update_position(x, y)
-
+ 
     def print_positions(self):
         for horse in self.horses:
             print(f"말 이름: {horse.name}, 위치: ({horse.x}, {horse.y})")
