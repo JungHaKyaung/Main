@@ -13,7 +13,7 @@ def catching_a_horse(yut_py, yut_px, teams, current_team):
                  
                 
 #윷놀이 판 생성   
-yut_board = [['-' for _ in range(7)] for _ in range(9)]         
+yut_board = [['-' for _ in range(7)] for _ in range(9)]          
              
               
 # 판에 좌표 설정
