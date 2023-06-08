@@ -110,7 +110,7 @@ while True:
         print("한 바퀴 돌았으며, 한 번 더 던집니다.")
 
     moveable_pieces = [i for i, position in enumerate(player_positions[current_team]) if position < len(yut_board) - 1]
-
+ 
     if not moveable_pieces:
         print("움직일 말이 없습니다.")
         continue
