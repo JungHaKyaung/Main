@@ -18,7 +18,7 @@ yut_board = [['-' for _ in range(7)] for _ in range(9)]
               
 # 판에 좌표 설정
 for x in range(9): 
-    for y in range(7): 
+    for y in range(7):  
         yut_board[x][y] = f'({x}, {y})'  
                        
 
