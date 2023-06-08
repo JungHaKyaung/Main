@@ -41,5 +41,5 @@ for x in yut_board:
    
 
  
-
+         
 
